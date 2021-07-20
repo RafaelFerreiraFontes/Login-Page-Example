@@ -20,9 +20,9 @@ body
 {
     display: flex;
 
-    width: 420px;
+    width: 465px;
     
-    height: 350px;
+    height: 550px;
     
     margin: 0 auto;
     
@@ -34,36 +34,42 @@ body
 
     border-radius: 5px;
 
-    box-shadow: 0 1.5px 4px rgb(0 0 0 / 20%);
+    box-shadow: 0 1.5px 4px rgb(0 0 0 / 10%);
 }
 
 input
 {
-    width: 375px;
-
-    font-size: 18px;
-
+    width: 415px;
+ 
     height: 42px;
 
     display: flex;
-    
-    margin: 25px auto;
-    
+ 
+    font-size: 18px;
+
+    color: #000;
+
+    margin: 22px auto;
+ 
+    padding: 0 16px;
+
     align-items: center;
-    
+ 
     align-content: center;
 
-    outline-color: rgb(1, 158, 248);
 }
 
+input::placeholder 
+{
+    color: black;
+    opacity: 75%;
+}
 
 .submitButton 
 {
-    width: 385px;
+    width: 175px;
 
     color: #fff;
-
-    font-size: 18px;
 
     font-weight: bold;
 
@@ -81,34 +87,24 @@ input
     background-color: rgb(46, 59, 248);
 }
 
-a
-{    
+.backButton
+{
     width: 175px;
 
-    display: flex;
-
-    margin: auto;
-    
-    font-size: 18px;
+    color: #fff;
 
     font-weight: bold;
 
-    align-content: center;
-    
     justify-content: center;
-    
-    padding: 12px;
 
-    text-decoration: none;
+    border-radius: 4px;
 
-    color: white;
+    background-color: rgb(134, 134, 134);
 
-    background-color: #42b72a;
-
-    border-radius: 5px;
+    border: 1.5px solid rgb(134, 134, 134);
 }
 
-a:hover
+.backButton:hover
 {
-    background-color: rgb(43, 175, 38);
+    background-color: rgb(112, 112, 112);
 }

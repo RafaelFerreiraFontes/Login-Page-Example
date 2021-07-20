@@ -1,40 +1,41 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 
-// criando servidor http
+// creating http server
 var app = express();
+
+var sqlite3 = require("sqlite3").verbose();
+var db = new sqlite3.Database("users");
 
 const PORT = '8000';
 
 let data = [];
 
-app.use(express.urlencoded({ 
-    extended: true
-}));
 
-// configurando pasta public (onde vai ficar os arquivos no servidor.)
+// configuring the public folder (where the files will stay on the server.)
 app.use(express.static("public"));
+app.use(express.json({ limit: '256mb' }))
 
-// configurando template engine 
+// configuring template engine 
 nunjucks.configure("pages", {
     autoescape: true,
     express: app
-}); 
+});
 
 app.set('view engine', 'html');
 
-// criando rota GET para a rota http://localhost:PORT/
+// creating GET route to http://localhost:PORT/ route
 app.get('/', (req, res) => { 
-    // sempre que houver chamada para essa rota será renderizado o index.html com os dados de "data"
+    // whenever there is a call to this route, the index.html will be rendered with the "data" data
     res.render('index.html');
 });
 
-// criando rota POST para a rota http://localhost:PORT/
+// creating POST route to http://localhost:PORT/ route
 app.post('/', (req, res) => {
-    // adicionando novo perfil e reenviando o html atualizado
-    const new_profile = req.body;
-    
-    data.push(new_profile);
+    // adding new profile and resending updated html
+    let new_profile = req.body;
+
+    console.log(new_profile)
 
     res.render('index.html');
 });
@@ -45,7 +46,12 @@ app.get('/users', (req, res) => {
     res.render('datas.html', { data });
 });
 
-// iniciando servidor
+app.get('/createUser', (req, res) =>{
+
+    res.render('loginCreate.html');
+});
+
+// start server
 app.listen(PORT, () => {
     console.log(`Listening on port http://localhost:${PORT}`);
 });
