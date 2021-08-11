@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 });
 
 // creating POST route to http://localhost:PORT/ route
-app.post('/', (req, res) => {
+app.post('/createUser', (req, res) => {
     // adding new profile and resending updated html
     let new_profile = req.body;
 
